@@ -1,0 +1,128 @@
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim' 
+Plugin 'tpope/vim-fugitive' 
+Plugin 'tpope/vim-sensible' 
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+"Plugin 'scrooloose/syntastic' 
+Plugin 'scrooloose/nerdcommenter' 
+Plugin 'mattn/emmet-vim' 
+Plugin 'Shougo/neocomplcache.vim' 
+Plugin 'nathanaelkane/vim-indent-guides' 
+"Plugin 'altercation/vim-colors-solarized' 
+Plugin 'dracula/vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'jnurmine/Zenburn'
+Plugin 'dapplebeforedawn/vim-typing-practice'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-scripts/indentpython.vim'
+"Plugin 'Valloric/YouCompleteMe'
+"Plugin 'vim-syntastic/syntastic'
+Plugin 'Syntastic'
+"Plugin 'davidhalter/jedi-vim'
+Plugin 'nvie/vim-flake8'
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'tpope/vim-commentary'
+
+call vundle#end()
+filetype plugin indent on
+
+syntax enable
+set number
+set autoindent
+set cindent
+set background=dark
+"set smartindent
+set tabstop=4
+set expandtab
+set shiftwidth=4
+let NERDTreeIgnore=['\.pyc$', '\~$'] "Ignore files in NERDTree
+set splitbelow
+set splitright
+
+"split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+"Enable folding
+set foldmethod=indent
+set foldlevel=99
+
+"Enable folding with the spacebar
+nnoremap <space> za
+
+"Want to see the docstrings for folded code?
+let g:SimpylFold_docstring_preview=1
+
+"au BufNewFile,BufRead *.py
+"	\ set tabstop=4
+"	\ set softtabstop=4
+"	\ set shiftwidth=4
+"	\ set textwidth=79
+"	\ set expandtab
+"	\ set autoindent
+"	\ set fileformat=unix
+
+"au BufNewFile,BufRead *.js,*.html,*.css
+"	\ set tabstop=2
+"	\ set softtabstop=2
+"	\ set shiftwidth=2
+
+"Flagging Unnecessary Whitespace
+"au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+"UTF-8 Support
+set encoding=utf-8
+
+"Auto-complete
+"let g:ycm_autoclose_preview_window_after_completion=1
+"map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+"Python with virtualenv support
+"py << EOF
+"import os
+"import sys
+"if 'VIRTUAL_ENV' in os.environ:
+"	project_base_dir = os.environ['VIRTUAL_ENV']
+"	activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+"	execfile(activate_this, dict(__file__=activate_this))
+"EOF
+
+"Syntax Checking/Highlighting
+let python_highlight_all=1
+syntax on
+
+"Colorscheme
+if has('gui_running')
+	set background=dark
+	colorscheme jellybeans
+else
+endif
+"call togglebg#map("<F5>")
+
+"File Browsing
+"Super Searching
+"System clipboard
+set clipboard=unnamed
+
+set cursorline
+set cursorcolumn
+hi CursorLine cterm=bold ctermfg=white ctermbg=darkgrey guifg=white guibg=darkgrey
+hi CursorColumn cterm=bold ctermfg=white ctermbg=darkgrey guifg=white guibg=darkgrey
+nnoremap HI :set cursorline!  cursorcolumn!<CR>
+"-- EMMET CONFIG --
+""redefine trigger key
+let g:user_emmet_leader_key=','
+
+" Syntastic
+let g:syntastic_python_checkers = [ 'pep8' ]
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_check_on_open=1
+let g:syntastic_check_on_wq=0
+
+syntax on
